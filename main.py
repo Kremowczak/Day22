@@ -30,9 +30,19 @@ while game_on:
     time.sleep(0.1)
 
 
+    #colision with wall detection
+    if ball.ycor() >= 270:
+        ball.upper_wall_hit()
+        print("upper wall hit")
+    if ball.ycor() <= -270:
+        ball.lower_wall_hit()
+        print("lower wall hit")
 
-
-
+    #collision with paddle detection
+    if ball.xcor() >= (paddle2.xcor() - 20):
+        ball.right_paddle_hit()
+    elif ball.xcor() <= (paddle.xcor() + 20):
+        ball.left_paddle_hit()
 
 
 screen.exitonclick()

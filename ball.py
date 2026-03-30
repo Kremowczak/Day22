@@ -9,9 +9,20 @@ class Ball(Turtle):
         self.speed(0)
         self.x = self.xcor()
         self.y = self.ycor()
-        self.x_move = 25
-        self.y_move = 25
+        self.x_move = 7
+        self.y_move = 7
 
     def move(self):
-        if self.ycor() >= 0:
-            self.goto(self.x + self.x_move, self.y - self.y_move)
+        new_x = self.xcor() + self.x_move
+        new_y = self.ycor() + self.y_move
+        self.goto(new_x, new_y)
+
+
+    def upper_wall_hit(self):
+        self.y_move = -7
+    def lower_wall_hit(self):
+        self.y_move = 7
+    def right_paddle_hit(self):
+        self.x_move = -7
+    def left_paddle_hit(self):
+        self.x_move = 7
