@@ -6,6 +6,6 @@
 #Create another paddle - done
 #Create the ball and make it move - done
 #Detect collision with wall and bounce -done
-#Detect collision with paddle
-#Detect when paddle misses
+#Detect collision with paddle - done
+#Detect when paddle misses - done
 #keep score

@@ -1,10 +1,11 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 
-
+score_board = Scoreboard()
 game_on = True
 ball = Ball()
 screen = Screen()
@@ -21,27 +22,28 @@ screen.onkeypress(paddle.move_up, "w")
 screen.onkeypress(paddle.move_down, "s")
 screen.onkeypress(paddle2.move_up, "Up")
 screen.onkeypress(paddle2.move_down, "Down")
-
-
+score_board.draw_line()
 
 while game_on:
     ball.move()
     screen.update()
     time.sleep(0.1)
 
-
     #colision with wall detection
-    if ball.ycor() >= 270:
+    if ball.ycor() >= 280:
         ball.upper_wall_hit()
         print("upper wall hit")
-    if ball.ycor() <= -270:
+    if ball.ycor() <= -280:
         ball.lower_wall_hit()
         print("lower wall hit")
 
     #collision with paddle detection
-    if ball.xcor() >= (paddle2.xcor() - 20):
+    if ball.xcor() >= (paddle2.xcor() - 20) and ball.ycor() <= (paddle2.ycor() + 20):
         ball.right_paddle_hit()
-    elif ball.xcor() <= (paddle.xcor() + 20):
+    elif ball.xcor() >= (paddle2.xcor()) or ball.xcor() <= (paddle.xcor()):
+        game_on = False
+        print("Game Over")
+    elif ball.xcor() <= (paddle.xcor() + 20) and ball.ycor() <= (paddle.ycor() + 20):
         ball.left_paddle_hit()
 
 
