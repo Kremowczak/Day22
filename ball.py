@@ -17,6 +17,12 @@ class Ball(Turtle):
         new_y = self.ycor() + self.y_move
         self.goto(new_x, new_y)
 
+    def reset_ball(self):
+        self.x = 0
+        self.y = 0
+        self.y_move *= -1
+        self.x_move *= -1
+        self.goto(self.x, self.y)
 
     def upper_wall_hit(self):
         self.y_move = -7

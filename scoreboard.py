@@ -21,5 +21,15 @@ class Scoreboard(Turtle):
             self.penup()
             self.forward(20)
 
+    def draw_score(self):
+        self.clear()
+        self.draw_line()
+        self.goto(-250, 200)
+        self.write(f"Score: {self.score1}",)
+        self.goto(250, 200)
+        self.write(f"Score: {self.score2}",)
+
     def add_score1(self):
         self.score1 += 1
+    def add_score2(self):
+        self.score2 += 1
